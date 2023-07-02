@@ -1,5 +1,5 @@
-<h1>Proyecto Ecommerce Vue.js</h1>
-<p>Proyecto personal de una app ecommerce para el curso de Vue.js de Coderhouse. Se simula una Tienda Gourmet online con modalidad de envío a domicilio. El sitio es Full Responsive, adaptado para mobile, tablet y desktop.</p>
+<h1>Proyecto Website RPM Racing League</h1>
+<p>Proyecto del website de la liga simracing RPM Racing League. El sitio es Full Responsive, adaptado para mobile, tablet y desktop.</p>
 <p>El proyecto funcionando: https://clinquant-eclair-bd6726.netlify.app/</p>
 
 <h2>Tecnologías Utilizadas</h2>
@@ -17,7 +17,7 @@
 
 <h2>Usabilidad</h2>
 <p>
-El sistema provee de 2 clases de usuarios: Administrador y Cliente. Cada uno de ellos tienen diferentes menúes, que serán visibles de acuerdo al rol que poseen.
+El sistema registrará usuarios administradores y usuarios comunes. Cada uno de ellos tienen diferentes menúes, que serán visibles de acuerdo al rol que poseen.
 </p>
 
 <h3>Usuario Administrador</h3>
@@ -26,24 +26,21 @@ El sistema provee de 2 clases de usuarios: Administrador y Cliente. Cada uno de 
 <p>El usuario Administrador posee un menu diferente al de un usuario-cliente, cuyos items son:</p>
 <ul>
     <li>
-    Productos: posee un listado de todos los productos de la App, pudiendo crear nuevos, modificar y eliminar los existentes.
+    Torneos: posee un listado de todos los Torneos creados, pudiendo crear nuevos, modificar y eliminar los existentes.
     </li>
     <li>
-    Usuarios: listado de usuarios con los datos de registración y con la opción de cambiar el rol de determinado usuario, ya sea de Admin a Cliente o viceversa mediante un "switch".
+    Usuarios: listado de usuarios con los datos de registración y con la opción de cambiar el rol de determinado usuario, ya sea de Admin a User o viceversa mediante un "switch".
     </li>
     <li>
-    Pedidos: aquí se listan los pedidos de los clientes, los cuales tienen 2 fases: pagados y enviados. Estas funcionalidades se habilitan mediante un "switch": cuando abonen se habilita el Envío a domicilio. Cuando se envia, la fila se resalta el fondo para entender que el pedido está completado.
+    Compras/Inscripciones: aquí se listan las compras de los usuarios, ya sea inscripciones a los torneos o pagos voluntarios ("donaciones"). Hay 2 fases: pagados y cancelados. Estas funcionalidades se habilitan mediante un "switch": cuando abonen se habilita al usuario a participar de X torneo.
     </li>
 </ul>
 
-<h3>Usuario Cliente</h3>
+<h3>Usuario Normal</h3>
 <p><strong>User:</strong> user@coder.com</p>
 <p><strong>Pass:</strong> 222222</p>
 <p>El usuario Cliente posee un menu con los siguientes items:</p>
 <ul>
-    <li>
-    Productos: Aqui se listan todos los productos del ecommerce. Puede agregarlos al carrito de compras, puede ampliar el producto para ver mas detalles del mismo. Tambien puede filtrar una busqueda por nombre, precio y marca, individuales o en conjunto.
-    </li>
     <li>
     Carrito: en el carrito puede modificar cantidades, eliminar items individualmente o vaciar el carrito. Al hacer estas acciones el valor total de la compra varía de acuerdo a las cantidades y precios unitarios del producto. Si continúa la app le pide una confirmación y se procede a realizar la compra, pudiendo ver en el siguiente apartado su pedido realizado y en que estado se encuentra.
     </li>
@@ -54,5 +51,5 @@ El sistema provee de 2 clases de usuarios: Administrador y Cliente. Cada uno de 
 
 <h2>Autor</h2>
 <ul>
-    <li>Hernán Donatelli</li>
+    <li>Studioatlantic</li>
 </ul>
