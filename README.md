@@ -1,6 +1,6 @@
 <h1>Proyecto Website RPM Racing League</h1>
 <p>Proyecto del website de la liga simracing RPM Racing League. El sitio es Full Responsive, adaptado para mobile, tablet y desktop.</p>
-<p>El proyecto funcionando: https://clinquant-eclair-bd6726.netlify.app/</p>
+<p>El proyecto funcionando: https://websiterpm.netlify.app/#/</p>
 
 <h2>Tecnologías Utilizadas</h2>
 
