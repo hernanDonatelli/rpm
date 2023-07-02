@@ -3,7 +3,7 @@
     <v-container class="contenedor">
       <v-row class="intro d-flex justify-center align-content-center">
         <v-col xs="10" md="8">
-          <h1 class="homeTitle text-center"><span>Tienda Online</span> de Productos Gourmet, Naturales y Saludables</h1>
+          <h1 class="homeTitle text-center"><span>RPM Racing League</span> Liga Argentina de Simracing</h1>
 
           <v-stepper value="3" class="stepHeader my-10">
             <v-stepper-header>
