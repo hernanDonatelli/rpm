@@ -5,13 +5,13 @@
 
       <v-toolbar-title class="text-uppercase amber--text">
         <router-link v-if="getUserActive() === null" to="/">
-          <span class="font-weight-light">RPM</span><span class="font-weight-black">RacingLeague</span>
+          <span class="font-weight-black">RPM</span><span class="font-weight-light">RacingLeague</span>
         </router-link>
         <router-link v-else-if="!getUserActive().admin" to="/">
-          <span class="font-weight-light">RPM</span><span class="font-weight-black">RacingLeague</span>
+          <span class="font-weight-black">RPM</span><span class="font-weight-light">RacingLeague</span>
         </router-link>
         <router-link v-else to="/admin-dashboard">
-          <span class="font-weight-light">RPM</span><span class="font-weight-black">Admin</span>
+          <span class="font-weight-black">RPM</span><span class="font-weight-light">Admin</span>
         </router-link>
       </v-toolbar-title>
 
