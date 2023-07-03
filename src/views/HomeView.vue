@@ -1,42 +1,19 @@
 <template>
   <div id="home">
-    <v-container class="contenedor">
-      <v-row class="intro d-flex justify-center align-content-center">
-        <v-col xs="10" md="8">
-          <h1 class="homeTitle text-center"><span>RPM Racing League</span> Liga Argentina de Simracing</h1>
-
-          <v-stepper value="3" class="stepHeader my-10">
-            <v-stepper-header>
-              <v-stepper-step color="success" step="1" complete>
-                <span class="stepText">Registrate</span>
-              </v-stepper-step>
-
-              <v-divider></v-divider>
-
-              <v-stepper-step color="success" step="2" complete>
-                <span class="stepText">Llena tu Carrito</span>
-              </v-stepper-step>
-
-              <v-divider></v-divider>
-
-              <v-stepper-step color="success" step="3" complete>
-                <span class="stepText">Recibe tu pedido!</span>
-              </v-stepper-step>
-            </v-stepper-header>
-          </v-stepper>
-
-          <p class="text-center white--text pIntro mt-5">Registrate y vas a poder acceder a los mejores productos
-            gourmet del mercado, de marcas consolidadas, directamente a tu domicilio!</p>
-        </v-col>
-      </v-row>
+    <v-container class="contenedor p-0">
+      <home-component />
     </v-container>
   </div>
 </template>
 
 <script>
+import HomeComponent from "@/components/HomeComponent.vue";
 
 export default {
   name: "HomeView",
+  components: {
+    HomeComponent
+  }
 
 };
 </script>
@@ -50,28 +27,19 @@ export default {
   background-repeat: no-repeat;
 }
 
+.container{
+  min-width: 100%;
+  padding: 0;
+}
 .contenedor {
-  height: 100%;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.intro {
-  height: 100%;
-  max-width: 90%;
-  margin: 0 auto;
-}
 
-.homeTitle {
-  font-family: Roboto;
-  color: white;
-  font-weight: 200;
-  line-height: .9;
-  font-size: 3rem;
-}
-
-.homeTitle span {
-  color: #FFB300;
-  font-weight: 900;
-}
 
 .stepHeader {
   background-color: rgba(0, 0, 0, 0);
@@ -108,6 +76,7 @@ export default {
 }
 
 @media screen and (min-width: 991.98px) {
+
   .stepHeader {
     display: block;
   }
