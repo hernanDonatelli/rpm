@@ -6,9 +6,9 @@
             class="mx-3"
             fab
             small
-            color="amber accent-4"
+            color="red accent-3"
             >
-                <v-icon color="brown darken-1" dark>
+                <v-icon color="white" dark>
                     mdi-cart-variant
                 </v-icon>
                 <span>{{ getCartUserActive().length }}</span>
@@ -22,7 +22,7 @@
         text
         small
         class="py-4"
-        color="amber accent-3">
+        color="red accent-3">
             <span class="logout pr-1">Logout</span> <v-icon>mdi-exit-to-app</v-icon>
         </v-btn>
     </div>
@@ -40,6 +40,7 @@ import {mapGetters, mapMutations} from 'vuex';
             logOut(){
                 this.logOutUser();
                 localStorage.clear();
+                this.$store.state.token = null;
                 this.$router.push('/');
             }
 
@@ -65,7 +66,7 @@ span.user{
     font-weight: 500;
 }
 span.logout{
-    color: #FFC400;
+    color: #ff1744;
     font-weight: normal;
 }
 .v-btn--fab.v-size--small{
@@ -73,7 +74,7 @@ span.logout{
     height: 45px;
 }
 .v-btn--fab.v-size--small span{
-    color: #6D4C41;
+    color: white;
     font-size: 1.2rem;
 }
 </style>

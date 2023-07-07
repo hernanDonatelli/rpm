@@ -63,8 +63,8 @@ export default {
     this.getUsersAPI();
   },
   methods: {
-    ...mapMutations(["modifiedUserActive", "modifiedUserStorage"]),
-    ...mapActions(["getUsersAPI"]),
+    ...mapMutations(["modifiedUserActive", "modifiedUserStorage", "loadToken", "loadUser"]),
+    ...mapActions(["getUsersAPI", "getTokenApi", "getUserRPM"]),
 
 
     validate() {
@@ -80,6 +80,15 @@ export default {
           document.getElementById("alert").classList.add("hidden");
         }, 2500);
       } else {
+        //Una vez logueado genero el token en la API y lo almaceno en localstorage y en el store
+        const generateToken = async()=> {
+          await this.getTokenApi();
+          await this.getUserRPM();
+
+        }
+
+        generateToken();
+
         const userFinded = this.getRegistered.find(
           (user) => user.email == this.email && user.password == this.password
         );
@@ -109,6 +118,8 @@ export default {
       "getRegistered",
       "getUserStorage",
       "getItemsCart",
+      "getToken",
+      "getUser"
     ]),
   }
 };

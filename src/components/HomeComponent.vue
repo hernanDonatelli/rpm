@@ -15,21 +15,15 @@
 
       <div class="contador">
         <h3 class="homeSubTitle text-center">Proximo Evento</h3>
-        <counter-component class="counter_component text-center grey lighten-5"
-        :year="2023"
-        :month="6"
-        :date="29"
-        :hour="22"
-        :minutes="0"
-        :seconds="0"
-        />
+        <counter-component class="counter_component text-center grey lighten-5" :year="2023" :month="6" :date="29"
+          :hour="22" :minutes="0" :seconds="0" />
       </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import CounterComponent from "@/components/CounterComponent.vue";
 
 export default {
@@ -42,21 +36,72 @@ export default {
 
     }
   },
+  beforeCreate() {
+
+  },
+
   created() {
-    this.getUsersAPI();
+    this.getTokenApi();
+    // this.getTorneosApi();
+  },
+  mounted() {
+    this.getUserRPM();
+    this.getToken();
+    // this.getUser();
+    this.getTorneos();
+    this.checkToken();
   },
   methods: {
-    ...mapMutations(["loadUsers"]),
-    ...mapActions(["getUsersAPI"])
+    ...mapActions(["getTokenApi", "getUserRPM", "getTorneosApi"]),
+    ...mapMutations(["loadToken", "loadUser", "loadTorneos"]),
+    ...mapGetters(["getToken", "getUser", "getTorneos"]),
+
+    checkToken() {
+      const tokenStorage = JSON.parse(localStorage.getItem('token'));
+
+      if (tokenStorage === null) {
+        const generateNewToken = async () => {
+          await this.getTokenApi();
+        };
+
+        generateNewToken();
+
+      } else {
+
+        const tokenExpired = async () => {
+          const checkToken = await this.getUser();
+
+          if (checkToken === "Token is Invalid") {
+            await this.getTokenApi();
+            console.log('token invalido');
+            // await crearTablasCalendario(20, 'GPVA Copa Gol');// editar aca (idTorneo, nombreDeTorneo)
+          } else {
+            console.log('token valido');
+            await this.getTorneosApi();
+            // await crearTablasCalendario(20, 'GPVA Copa Gol');// editar aca (idTorneo, nombreDeTorneo)
+          }
+        };
+
+        tokenExpired();
+      }
+
+      // if (this.$store.state.token != localStorage.getItem("token") || this.$store.state.token === null) {
+      //   this.getTokenApi();
+      // } else {
+      //   this.getUserRPM();
+      //   this.getTorneos();
+      // }
+    }
   },
 };
 </script>
 
 <style scoped>
-.counter_component.grey.lighten-5{
+.counter_component.grey.lighten-5 {
   background-color: transparent !important;
   color: white;
 }
+
 .intro {
   position: relative;
   height: 100%;
@@ -64,7 +109,7 @@ export default {
   margin: 0 auto;
 }
 
-video{
+video {
   position: absolute;
   top: 0;
   left: 0;
@@ -72,7 +117,8 @@ video{
   height: 100%;
   object-fit: cover;
 }
-.capa{
+
+.capa {
   position: absolute;
   top: 0;
   left: 0;
@@ -82,10 +128,10 @@ video{
   mix-blend-mode: overlay;
 }
 
-.contador{
+.contador {
   width: 100%;
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   left: 0;
   background: transparent;
 }
@@ -101,9 +147,10 @@ video{
 }
 
 .homeTitle span {
-  color: #FFB300;
+  color: #FF1744;
   font-weight: 900;
 }
+
 .homeSubTitle {
   font-family: Montserrat;
   color: white;

@@ -3,6 +3,13 @@
     <v-container class="contenedor p-0">
       <home-component />
     </v-container>
+    <v-container>
+      <v-row>
+        <v-col xs="12">
+          <h1>Titulo Nomas</h1>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -20,7 +27,7 @@ export default {
 
 <style scoped>
 #home {
-  height: 100vh;
+  /* height: 100vh; */
   background-image: url(@/assets/hero.jpg);
   background-position: center;
   background-size: cover;

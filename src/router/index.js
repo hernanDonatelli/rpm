@@ -47,6 +47,11 @@ const routes = [
     component: () => import('../views/ShopView.vue')
   },
   {
+    path: '/campeonato/:id',
+    name: 'Campeonato',
+    component: () => import('../views/CampeonatoView.vue')
+  },
+  {
     path: '/admin-dashboard',
     name: 'Dashboard',
     component: () => import('../views/AdminView.vue'),

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-app-bar absolute shaped color="brown darken-3" dark>
+
+    <v-app-bar app elevate-on-scroll color="dark" dark>
       <v-app-bar-nav-icon v-if="getUserActive()" @click="drawer = true"></v-app-bar-nav-icon>
 
       <v-toolbar-title class="text-uppercase amber--text">
@@ -15,7 +16,10 @@
         </router-link>
       </v-toolbar-title>
 
-        <v-spacer></v-spacer>
+      <v-img class="rpmlogo" src="@/assets/logorpm.png" max-height="600" max-width="248">
+
+      </v-img>
+      <v-spacer></v-spacer>
 
       <div v-if="!getUserActive()">
         <v-row>
@@ -29,7 +33,7 @@
       <user-component />
     </v-app-bar>
 
-    <v-navigation-drawer v-if="this.getUserActive()" class="pt-10" v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-if="this.getUserActive()" class="pt-10" v-model="drawer" app temporary>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <div v-if="!this.getAdmin()">
@@ -61,6 +65,24 @@
                   Cart (<span>{{ this.getCartUserActive().length }}</span>)
                 </router-link>
               </v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-menu open-on-hover top offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                    Dropdown
+                  </v-btn>
+                </template>
+
+                <v-list>
+                  <v-list-item v-for="torneo in this.getTorneos()" :key="torneo.id">
+                    <v-list-item-title>
+                      <router-link :to="`/campeonato/${torneo.name}`">{{ torneo.name }}</router-link>
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
             </v-list-item>
 
             <v-list-item>
@@ -124,7 +146,7 @@
 
 <script>
 import UserComponent from "./UserComponent.vue";
-import { mapMutations, mapGetters } from "vuex";
+import { mapMutations, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "NavbarComponent",
@@ -138,11 +160,23 @@ export default {
     return {
       drawer: false,
       group: null,
+      torneos: [],
     };
   },
+  created(){
+    // this.getTokenApi();
+    // this.getUserRPM();
+    // this.getTorneosApi();
+  },
+  mounted() {
+    this.getToken();
+    this.getUser();
+    this.getTorneos();
+  },
   methods: {
-    ...mapMutations(["logOutUser"]),
-    ...mapGetters(["getUserActive", "getAdmin", "getCartUserActive"]),
+    ...mapMutations(["logOutUser", "loadToken", "loadTorneos"]),
+    ...mapGetters(["getUserActive", "getAdmin", "getCartUserActive","getUser", "getTorneos", "getToken"]),
+    ...mapActions(["getTokenApi", "getUserRPM", "getTorneosApi"]),
 
     logOut() {
       this.logOutUser();
@@ -157,8 +191,19 @@ export default {
 </script>
 
 <style scoped>
+.v-toolbar__content {
+  position: relative;
+}
+
+.rpmlogo {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .theme--light.v-navigation-drawer {
-  background-color: #4E342E;
+  background-color: #272727;
 }
 
 .v-application a {
@@ -166,30 +211,34 @@ export default {
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffb300;
+  color: #FF5252;
+}
+
+.v-application a:hover {
+  color: #ff8a80;
 }
 
 .v-list-item__icon i {
-  color: #ffb300;
+  color: #FF5252;
 }
 
 .v-application .deep-purple--text.text--accent-4 {
-  color: #ffb300 !important;
-  caret-color: #ffb300 !important;
+  color: #FF5252 !important;
+  caret-color: #FF5252 !important;
 }
 
 .theme--dark.v-btn.v-btn--has-bg {
-  background-color: #6d4c41;
+  background-color: #212121;
 }
 
 .theme--light.v-navigation-drawer .divider {
-  color: #ffb300;
-  border-color: rgba(255, 179, 0, 0.4);
+  color: #FF5252;
+  border-color: #FF525285;
   width: 90%;
   margin: auto;
 }
 
 h3 {
-  color: #ffb300;
+  color: #FF5252;
 }
 </style>
